@@ -20,11 +20,14 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.lmax.disruptor.support.LongEvent;
 
 public class EventPublisherTest implements EventTranslator<LongEvent>
 {
+	private static Logger log = LoggerFactory.getLogger(EventPublisherTest.class);
     private static final int BUFFER_SIZE = 32;
     private RingBuffer<LongEvent> ringBuffer = createMultiProducer(LongEvent.FACTORY, BUFFER_SIZE);
 
